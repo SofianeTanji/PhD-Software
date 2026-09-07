@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+site/
+.ruff_cache/
+.ipynb_checkpoints/
+folktables_data/
+figures/
+experiments/**/outputs*/
+experiments/**/*.json
+experiments/**/*.jsonl
+experiments/**/*.pkl
+.DS_Store
