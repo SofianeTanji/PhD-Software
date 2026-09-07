@@ -1,0 +1,35 @@
+# Data
+experiments/data/
+
+# Experiment outputs
+experiments/results/
+experiments/figures/
+experiments/results.csv
+results.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+src/snacks/_cython_solver.c
+dist/
+build/
+.eggs/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# OS
+.DS_Store
+
+# Generated documentation
+site/

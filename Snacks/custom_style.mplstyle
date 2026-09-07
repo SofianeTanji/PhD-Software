@@ -1,0 +1,93 @@
+# Shared style for the Snacks experiment figures.
+
+# Figure
+figure.figsize: 5.5, 3.8
+figure.dpi: 150
+figure.facecolor: white
+figure.edgecolor: white
+figure.constrained_layout.use: False
+
+# Font
+font.family: serif
+font.serif: Minion Pro, Computer Modern Roman, CMU Serif, Latin Modern Roman, DejaVu Serif, Times New Roman, serif
+font.size: 12
+font.weight: regular
+mathtext.fontset: custom
+mathtext.rm: Minion Pro
+mathtext.it: Minion Pro:italic
+mathtext.bf: Minion Pro:bold
+
+# Axes
+axes.titlesize: 13
+axes.titleweight: regular
+axes.titlelocation: center
+axes.titlepad: 7
+axes.labelsize: 12
+axes.labelweight: regular
+axes.labelpad: 5
+axes.facecolor: "#f2f2f2"
+axes.edgecolor: black
+axes.spines.top: True
+axes.spines.right: True
+axes.linewidth: 1.5
+axes.grid: True
+axes.axisbelow: True
+
+# Color cycle
+axes.prop_cycle: cycler(color=["#194F8C", "#A0B78F", "#EB9486", "#A53860", "#6096BA", "#A3CEF1", "#7B2D8B", "#E6A817"])
+
+# Colormap
+image.cmap: BuRd
+
+# Grid
+grid.alpha: 1.0
+grid.linewidth: 0.6
+grid.linestyle: :
+grid.color: "#cfcfcf"
+
+# Ticks
+xtick.labelsize: 11
+ytick.labelsize: 11
+xtick.direction: in
+ytick.direction: in
+xtick.major.width: 1.2
+ytick.major.width: 1.2
+xtick.minor.width: 1.0
+ytick.minor.width: 1.0
+xtick.major.size: 4.5
+ytick.major.size: 4.5
+xtick.minor.size: 2.5
+ytick.minor.size: 2.5
+xtick.minor.visible: True
+ytick.minor.visible: True
+
+# Legend
+legend.fontsize: 10
+legend.frameon: True
+legend.fancybox: True
+legend.framealpha: 0.9
+legend.facecolor: "#f4f4f4"
+legend.edgecolor: "#cfcfcf"
+legend.handlelength: 1.8
+legend.handletextpad: 0.6
+legend.labelspacing: 0.4
+
+# Lines
+lines.linewidth: 1.1
+lines.markersize: 5
+
+# Scatter
+scatter.marker: o
+scatter.edgecolors: face
+
+# Patches and error bars
+patch.linewidth: 0.5
+patch.edgecolor: white
+errorbar.capsize: 3
+
+# Savefig
+savefig.dpi: 220
+savefig.bbox: tight
+savefig.pad_inches: 0.05
+savefig.facecolor: white
+savefig.edgecolor: white
