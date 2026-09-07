@@ -1,0 +1,127 @@
+# Theorem declarations for the conditional gradient family.
+[[theorems]]
+bound = "frank_wolfe_convex_diameter_bound"
+citation = "Jaggi 2013 ICML/PMLR 28, Thm. 1 plus Lem. 7 curvature bound Cf <= L*diameter^2"
+id = "frank_wolfe_smooth_convex_diameter"
+initial_bound = "none"
+method = "frank_wolfe"
+name = "Frank-Wolfe"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_diameter_squared_over_k_plus_two"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    step_size = "frank_wolfe_open_loop_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "linear_minimization"
+[[theorems]]
+bound = "frank_wolfe_nonconvex_gap_bound"
+citation = "Lacoste-Julien 2016 arXiv:1607.00345, Thm. 1 plus curvature bound Cf <= L*diameter^2"
+id = "frank_wolfe_smooth_nonconvex_gap_best"
+initial_bound = "objective_gap"
+method = "frank_wolfe"
+name = "Frank-Wolfe (Nonconvex Stationarity)"
+output = "best"
+quantity = "frank_wolfe_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "max_two_initial_gap_L_diameter_squared_over_sqrt_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "frank_wolfe_nonconvex_constant_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "linear_minimization"
+[[theorems]]
+bound = "frank_wolfe_convex_curvature_bound"
+citation = "Jaggi 2013 ICML/PMLR 28, Thm. 1, Frank-Wolfe primal objective rate with curvature constant"
+id = "frank_wolfe_smooth_convex_curvature"
+initial_bound = "none"
+method = "frank_wolfe"
+name = "Frank-Wolfe (Curvature)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_curvature_over_k_plus_two"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    step_size = "frank_wolfe_open_loop_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "frank_wolfe_curvature"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "linear_minimization"
+[[theorems]]
+bound = "frank_wolfe_nonconvex_curvature_gap_bound"
+citation = "Lacoste-Julien 2016 arXiv:1607.00345, Thm. 1, nonconvex Frank-Wolfe gap rate with curvature constant"
+id = "frank_wolfe_smooth_nonconvex_curvature_gap"
+initial_bound = "objective_gap"
+method = "frank_wolfe"
+name = "Frank-Wolfe (Curvature Nonconvex Stationarity)"
+output = "best"
+quantity = "frank_wolfe_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "max_two_initial_gap_curvature_over_sqrt_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "frank_wolfe_nonconvex_constant_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "frank_wolfe_curvature"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "linear_minimization"

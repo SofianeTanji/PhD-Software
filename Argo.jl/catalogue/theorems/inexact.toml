@@ -1,0 +1,38 @@
+# Theorem declarations for the inexact family.
+[[theorems]]
+bound = "schmidt2011_inexact_proximal_gradient_average_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 1, inexact proximal-gradient rate"
+id = "schmidt2011_inexact_proximal_gradient_ergodic"
+initial_bound = "distance_squared"
+method = "inexact_proximal_gradient"
+name = "Inexact Proximal Gradient"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "controlled_inexact"
+        name = "prox"
+
+            [theorems.roles.oracles.inexactness]
+            model = "absolute_subproblem_gap"
+            accuracy = "proximal_accuracy"
+            kappa = "L"
+            inner_quantity = "objective_gap"
+            inner_initial_bound = "distance_squared"
+            inner_initial_value = "inner_distance_squared"
+            max_inner_iterations = 100000

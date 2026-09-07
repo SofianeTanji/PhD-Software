@@ -1,0 +1,313 @@
+# Method declarations. Theorem declarations live in catalogue/theorems/.
+[[methods]]
+id = "accelerated_gradient"
+name = "Accelerated gradient"
+parameter_vocabulary = ["linear_factor", "momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+[[methods]]
+id = "accelerated_projected_gradient"
+name = "Accelerated projected gradient"
+parameter_vocabulary = ["momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "accelerated_proximal_point"
+name = "Accelerated proximal point"
+parameter_vocabulary = ["gamma", "momentum"]
+required_parameters = ["gamma", "momentum"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "f"
+[[methods]]
+id = "chambolle_pock"
+name = "Chambolle-Pock"
+parameter_vocabulary = ["dual_step_size", "primal_step_size"]
+required_parameters = ["dual_step_size", "primal_step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "operator"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "adjoint"
+    role = "g"
+[[methods]]
+id = "chambolle_pock_forward"
+name = "Forward Chambolle-Pock"
+parameter_vocabulary = ["dual_step_size", "primal_step_size"]
+required_parameters = ["dual_step_size", "primal_step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "operator"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "adjoint"
+    role = "g"
+[[methods]]
+id = "condat_vu"
+name = "Condat-Vu"
+parameter_vocabulary = ["dual_step_size", "primal_step_size"]
+required_parameters = ["dual_step_size", "primal_step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "operator"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "adjoint"
+    role = "g"
+[[methods]]
+id = "davis_yin_splitting"
+name = "Davis-Yin splitting"
+parameter_vocabulary = ["gamma"]
+required_parameters = ["gamma"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "h"
+[[methods]]
+id = "fista"
+name = "FISTA"
+parameter_vocabulary = ["momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "frank_wolfe"
+name = "Frank-Wolfe"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "linear_minimization"
+    role = "g"
+[[methods]]
+id = "gradient_descent"
+name = "Gradient descent"
+parameter_vocabulary = ["rate_factor", "step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+[[methods]]
+id = "inexact_proximal_gradient"
+name = "Inexact proximal gradient"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "projected_gradient"
+name = "Projected gradient"
+parameter_vocabulary = ["rate_factor", "step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "projected_subgradient_method"
+name = "Projected subgradient method"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "subgradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "proximal_gradient"
+name = "Proximal gradient"
+parameter_vocabulary = ["rate_factor", "step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "proximal_point"
+name = "Proximal point"
+parameter_vocabulary = ["gamma", "rate_factor"]
+required_parameters = ["gamma"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "f"
+[[methods]]
+id = "proximal_subgradient_method"
+name = "Proximal subgradient method"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "subgradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "simplified_accelerated_gradient"
+name = "Simplified accelerated gradient"
+parameter_vocabulary = ["momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+[[methods]]
+id = "simplified_accelerated_projected_gradient"
+name = "Simplified accelerated projected gradient"
+parameter_vocabulary = ["momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "simplified_accelerated_proximal_gradient"
+name = "Simplified accelerated proximal gradient"
+parameter_vocabulary = ["momentum", "step_size"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "strongly_convex_fista"
+name = "Strongly convex FISTA"
+parameter_vocabulary = ["linear_factor", "momentum", "step_size", "strong_convexity_ratio"]
+required_parameters = ["momentum", "step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "gradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "prox"
+    role = "g"
+[[methods]]
+id = "subgradient_method"
+name = "Subgradient method"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "subgradient"
+    role = "f"
+[[methods]]
+id = "subgradient_method_best_iterate"
+name = "Subgradient method with best-iterate tracking"
+parameter_vocabulary = ["step_size"]
+required_parameters = ["step_size"]
+
+    [[methods.calls]]
+    count = 1
+    oracle = "subgradient"
+    role = "f"
+    [[methods.calls]]
+    count = 1
+    oracle = "value"
+    role = "f"

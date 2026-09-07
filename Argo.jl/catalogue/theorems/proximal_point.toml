@@ -1,0 +1,172 @@
+# Theorem declarations for the proximal point family.
+[[theorems]]
+bound = "proximal_point_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Thm. 7, exact proximal-point objective bound"
+id = "proximal_point_exact_rate"
+initial_bound = "distance_squared"
+method = "proximal_point"
+name = "Proximal Point"
+output = "last"
+quantity = "objective_gap"
+tightness = "tight"
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_point_strongly_convex_gap_bound"
+citation = "Rockafellar 1976 SIAM J. Control Optim. 14(5), proximal point algorithm under strong monotonicity"
+id = "proximal_point_strongly_convex_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "proximal_point"
+name = "Proximal Point (Strongly Convex)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_over_one_plus_gamma_mu_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+    rate_factor = "proximal_point_strongly_convex_rate_factor"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_point_gradient_mapping_bound"
+citation = "Rockafellar 1976 SIAM J. Control Optim. 14(5), proximal point Fejer/resolvent residual estimate"
+id = "proximal_point_convex_gradient_mapping_best"
+initial_bound = "distance_squared"
+method = "proximal_point"
+name = "Proximal Point (Residual)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    measure_interpreted_as_proximal_residual_norm_squared = true
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_point_strongly_convex_distance_bound"
+citation = "Rockafellar 1976 SIAM J. Control Optim. 14(5), resolvent contraction under strong monotonicity"
+id = "proximal_point_strongly_convex_distance_contraction"
+initial_bound = "distance_squared"
+method = "proximal_point"
+name = "Proximal Point (Strongly Convex Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_over_one_plus_gamma_mu_power_two_k_times_distance_squared"
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+    rate_factor = "proximal_point_strongly_convex_rate_factor"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_point_strongly_convex_distance_from_gap_bound"
+citation = "Rockafellar 1976 SIAM J. Control Optim. 14(5), PPA linear rate plus strong-convexity distance conversion"
+id = "proximal_point_strongly_convex_distance_objective_gap"
+initial_bound = "objective_gap"
+method = "proximal_point"
+name = "Proximal Point (Strongly Convex Distance, Gap Initial)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_one_over_one_plus_gamma_mu_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+    rate_factor = "proximal_point_strongly_convex_rate_factor"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "guler_accelerated_proximal_point_bound"
+citation = "Guler 1992 SIOPT 2(4), new accelerated proximal-point algorithm O(1/(sum sqrt(gamma))^2) rate"
+id = "guler1992_accelerated_proximal_point_convex"
+initial_bound = "distance_squared"
+method = "accelerated_proximal_point"
+name = "Accelerated Proximal Point"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "distance_squared_over_two_gamma_lambda_k_squared"
+
+    [theorems.parameter_rules]
+    gamma = "unit_proximal_point_stepsize"
+    momentum = "fista_momentum"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "weakly_convex_proximal_point_gradient_mapping_bound"
+citation = "Drusvyatskiy 2018 arXiv:1712.06038, Moreau-envelope view of PPA for weakly convex functions"
+id = "weakly_convex_proximal_point_gradient_mapping_best"
+initial_bound = "objective_gap"
+method = "proximal_point"
+name = "Proximal Point (Weakly Convex Stationarity)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    measure_interpreted_as_moreau_gradient_mapping_norm_squared = true
+    objective_gap_interpreted_as_gap_to_lower_bound = true
+    requires_gamma_less_than_inverse_rho = true
+
+    [theorems.parameter_rules]
+    gamma = "weakly_convex_proximal_point_stepsize"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["hypo_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"

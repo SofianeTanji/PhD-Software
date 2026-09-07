@@ -1,0 +1,193 @@
+# Theorem declarations for the subgradient family.
+[[theorems]]
+bound = "subgradient_convex_lipschitz_bound"
+citation = "Nesterov 2004, Thm. 3.2.2, projected subgradient method with fixed horizon steps"
+id = "nesterov2004_subgradient"
+initial_bound = "distance_squared"
+method = "subgradient_method_best_iterate"
+name = "Subgradient Method"
+output = "best"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "subgradient_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "value"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+[[theorems]]
+bound = "subgradient_convex_lipschitz_bound"
+citation = "Nesterov 2004, Thm. 3.2.2, convex subgradient method averaged/best-iterate rate"
+id = "nesterov2004_subgradient_average_no_eval"
+initial_bound = "distance_squared"
+method = "subgradient_method"
+name = "Subgradient Method (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    no_objective_evaluation_required = true
+
+    [theorems.parameter_rules]
+    step_size = "subgradient_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+[[theorems]]
+bound = "proximal_subgradient_convex_lipschitz_bound"
+citation = "Nesterov 2004, Thm. 3.2.2 and Sec. 3.2.4, projected/proximal subgradient method"
+id = "proximal_subgradient_convex_lipschitz_average"
+initial_bound = "distance_squared"
+method = "proximal_subgradient_method"
+name = "Proximal Subgradient Method"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_subgradient_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_subgradient_strongly_convex_lipschitz_bound"
+citation = "Nesterov 2004, Sec. 3.2.3, strongly convex subgradient rate"
+id = "proximal_subgradient_sc_lipschitz_average"
+initial_bound = "distance_squared"
+method = "proximal_subgradient_method"
+name = "Proximal Subgradient Method (Strongly Convex)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_M_squared_over_mu_k_plus_one"
+    initial_is_not_used_by_bound = true
+    strong_convexity_carried_by_slot = "_tf"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_subgradient_strongly_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_subgradient_strongly_convex_lipschitz_distance_bound"
+citation = "Nesterov 2004, Sec. 3.2.3 plus strong-convexity gap-to-distance conversion"
+id = "proximal_subgradient_sc_lipschitz_distance_average"
+initial_bound = "distance_squared"
+method = "proximal_subgradient_method"
+name = "Proximal Subgradient Method (Strongly Convex Distance)"
+output = "average"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_M_squared_over_mu_squared_k_plus_one"
+    initial_is_not_used_by_bound = true
+    strong_convexity_carried_by_slot = "_tf"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_subgradient_strongly_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "subgradient_strongly_convex_lipschitz_bound"
+citation = "Nesterov 2004, Sec. 3.2.3, strongly convex subgradient rate"
+id = "subgradient_strongly_convex_lipschitz_average"
+initial_bound = "distance_squared"
+method = "subgradient_method"
+name = "Subgradient Method (Strongly Convex)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_M_squared_over_mu_k_plus_one"
+    initial_is_not_used_by_bound = true
+
+    [theorems.parameter_rules]
+    step_size = "subgradient_strongly_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+[[theorems]]
+bound = "subgradient_strongly_convex_lipschitz_distance_bound"
+citation = "Nesterov 2004, Sec. 3.2.3 plus strong-convexity gap-to-distance conversion"
+id = "subgradient_strongly_convex_lipschitz_distance_average"
+initial_bound = "distance_squared"
+method = "subgradient_method"
+name = "Subgradient Method (Strongly Convex Distance)"
+output = "average"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_M_squared_over_mu_squared_k_plus_one"
+    initial_is_not_used_by_bound = true
+
+    [theorems.parameter_rules]
+    step_size = "subgradient_strongly_convex_lipschitz_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "strongly_convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"

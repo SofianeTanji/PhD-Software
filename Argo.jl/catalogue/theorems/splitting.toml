@@ -1,0 +1,176 @@
+# Theorem declarations for the splitting family.
+[[theorems]]
+bound = "davis_yin_gradient_mapping_bound"
+citation = "Davis-Yin 2017 Set-Valued Var. Anal. 25, Thm. 3.1, Davis-Yin fixed-point residual rate"
+id = "pedregosa2021_davis_yin_gradient_mapping"
+initial_bound = "fixed_point_distance_squared"
+method = "davis_yin_splitting"
+name = "Davis-Yin Splitting"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    gamma = "davis_yin_stepsize"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+    [[theorems.roles]]
+    name = "h"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "davis_yin_ergodic_gap_bound"
+citation = "Davis-Yin 2017 Set-Valued Var. Anal. 25, Cor. D.5.2, ergodic objective/gap bound for three-operator splitting"
+id = "davis2017_three_operator_ergodic_gap"
+initial_bound = "distance_squared"
+method = "davis_yin_splitting"
+name = "Davis-Yin Splitting (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    gamma = "davis_yin_stepsize"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+    [[theorems.roles]]
+    name = "h"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "chambolle_pock_ergodic_gap_bound"
+citation = "Chambolle-Pock 2011 JMIV 40(1); Bousselmi-Hendrickx-Glineur 2023 arXiv:2302.08781, Thm 4.8, ergodic primal-dual gap under τσ‖M‖² ≤ 1"
+id = "chambolle_pock_ergodic_gap"
+initial_bound = "primal_dual_distance_squared"
+method = "chambolle_pock"
+name = "Chambolle-Pock"
+output = "average"
+quantity = "primal_dual_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    dual_step_size = "chambolle_pock_balanced_step"
+    primal_step_size = "chambolle_pock_balanced_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "linear_composition"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "operator"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "adjoint"
+[[theorems]]
+bound = "chambolle_pock_forward_ergodic_gap_bound"
+citation = "Chambolle-Pock 2016 Math. Program. 159, ergodic saddle gap with a forward step on the smooth term (τL_f + τσ‖M‖² ≤ 1, balanced ρ* = R_y/R_x); primal bound via dom g* ⊆ {‖y‖ ≤ B_g} for B_g-Lipschitz g"
+id = "chambolle_pock_forward_ergodic_gap"
+initial_bound = "distance_squared"
+method = "chambolle_pock_forward"
+name = "Chambolle-Pock (forward step)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    dual_step_size = "balanced_primal_dual_dual_step"
+    primal_step_size = "balanced_primal_dual_primal_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "lipschitz", "linear_composition"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "operator"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "adjoint"
+[[theorems]]
+bound = "condat_vu_ergodic_gap_bound"
+citation = "Condat 2013 JOTA 158 / Vu 2013 Adv. Comput. Math. 38; ergodic primal-dual estimate as in Chambolle-Pock 2016 Thm. 1 under 1/τ ≥ L_f + σ‖M‖², optimised at σ* = G/(‖M‖R); primal bound via dom g* ⊆ {‖y‖ ≤ G} for G-Lipschitz g, with the initial cross term bounded by ‖M(x*−x⁰)‖ ≤ ‖M‖R"
+id = "condat_vu_ergodic_gap"
+initial_bound = "distance_squared"
+method = "condat_vu"
+name = "Condat-Vu"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    dual_step_size = "balanced_primal_dual_dual_step"
+    primal_step_size = "balanced_primal_dual_primal_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "lipschitz", "linear_composition"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "operator"
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "adjoint"

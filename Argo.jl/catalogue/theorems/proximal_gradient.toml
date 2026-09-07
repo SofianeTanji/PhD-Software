@@ -1,0 +1,1058 @@
+# Theorem declarations for the proximal gradient family.
+[[theorems]]
+bound = "proximal_gradient_convex_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 3.1, ISTA composite convex rate"
+id = "beckteboulle2009_ista"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_mapping_from_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 and Thm. 3.1, ISTA mapping certificate"
+id = "beckteboulle2009_ista_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Mapping, Distance Initial)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_over_k"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "fista_composite_convex_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 4.4, FISTA composite convex rate"
+id = "beckteboulle2009_fista"
+initial_bound = "distance_squared"
+method = "fista"
+name = "FISTA"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "fista_composite_mapping_from_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 and Thm. 4.4, FISTA mapping certificate"
+id = "beckteboulle2009_fista_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "fista"
+name = "FISTA (Mapping, Distance Initial)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_over_lambda_k_squared"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_average_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 3.1, averaged ISTA composite convex rate"
+id = "beckteboulle2009_ista_average"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_average_mapping_from_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 and Thm. 3.1, averaged ISTA mapping certificate"
+id = "beckteboulle2009_ista_average_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient Average (Mapping)"
+output = "average"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_over_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "fista_composite_average_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 4.4 (last iterate) summed over iterates: the ergodic average inherits only O(1/k), with constant 2(π²/6 − 1)"
+id = "beckteboulle2009_fista_average"
+initial_bound = "distance_squared"
+method = "fista"
+name = "FISTA (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "fista_composite_average_mapping_from_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 and Thm. 4.4, averaged FISTA mapping certificate"
+id = "beckteboulle2009_fista_average_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "fista"
+name = "FISTA Average (Mapping)"
+output = "average"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_L_squared_distance_squared_over_k_plus_one_squared"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "simplified_accelerated_proximal_gradient_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1, exact worst-case FPGM variant"
+id = "taylor2017_simplified_apg"
+initial_bound = "distance_squared"
+method = "simplified_accelerated_proximal_gradient"
+name = "Simplified Accelerated Proximal Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "tight"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "simplified_accelerated_proximal_gradient_mapping_from_distance_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1 plus proximal-gradient mapping conversion"
+id = "taylor2017_simplified_apg_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "simplified_accelerated_proximal_gradient"
+name = "Simplified Accelerated Proximal Gradient (Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_L_squared_distance_squared_over_k_squared_plus_five_k_plus_two"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_strongly_convex_gap_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 with zero errors, strongly convex proximal-gradient rate"
+id = "proximal_gradient_sc_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_strongly_convex_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1, strongly convex accelerated proximal-gradient rate"
+id = "fista_composite_sc_linear_distance"
+initial_bound = "distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_strongly_convex_lyapunov_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1, strongly convex APG Lyapunov rate"
+id = "fista_composite_sc_linear_lyapunov"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Lyapunov)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_distance_from_distance_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1 plus strong-convexity gap-to-distance conversion"
+id = "fista_composite_sc_distance_certificate"
+initial_bound = "distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_sc_fista_distance_initial_gap_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_gap_from_gap_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1 plus the strong-convexity inequality E0 <= 2(F(x0)-F*)"
+id = "fista_composite_sc_gap_from_gap_derived"
+initial_bound = "objective_gap"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Gap-Initialized Derived Certificate)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    derived_guarantee = true
+    derivation = "strong convexity gives (mu/2) distance_squared <= objective_gap, hence the initial Lyapunov energy is at most twice the initial gap"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_distance_from_lyapunov_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1 plus strong-convexity gap-to-distance conversion"
+id = "fista_composite_sc_distance_lyapunov"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Distance, Lyapunov)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_sc_fista_lyapunov_gap_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_gradient_mapping_from_distance_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1 plus proximal-gradient mapping conversion"
+id = "fista_composite_sc_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Mapping, Distance Initial)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_sc_fista_distance_initial_gap_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "sc_fista_composite_gradient_mapping_from_lyapunov_bound"
+citation = "Lin-Xiao 2014 ICML/PMLR 32, Thm. 1 plus proximal-gradient mapping conversion"
+id = "fista_composite_sc_gradient_mapping_lyapunov"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "strongly_convex_fista"
+name = "SC-FISTA (Mapping, Lyapunov)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_sc_fista_lyapunov_gap_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+    strong_convexity_ratio = "sc_fista_strong_convexity_ratio"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_gradient_mapping_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3, proximal-gradient descent mapping inequality"
+id = "proximal_gradient_convex_gradient_mapping_best"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Stationarity)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_initial_gap_over_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_nonconvex_mapping_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3, proximal-gradient descent inequality"
+id = "proximal_gradient_nonconvex_gradient_mapping_best"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Nonconvex Stationarity)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    objective_gap_interpreted_as_gap_to_lower_bound = true
+    requires_step_size_less_than_inverse_L = true
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_nonconvex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_strongly_convex_distance_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 with zero errors, strongly convex proximal-gradient rate"
+id = "proximal_gradient_sc_distance_f_strongly_convex"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex, Distance Initial)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "half_L_distance_squared_times_one_minus_mu_over_L_power_k_minus_one"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_strongly_convex_gap_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3/Thm. 3.1 specialized to composite strong convexity in g"
+id = "proximal_gradient_sc_g_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_over_one_plus_mu_over_L_power_k_times_initial_gap"
+    strong_convexity_carried_by_slot = "_tg"
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_strongly_convex_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3/Thm. 3.1 specialized to composite strong convexity in g"
+id = "proximal_gradient_sc_g_distance_linear"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term, Distance Initial)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "half_L_distance_squared_times_one_over_one_plus_mu_over_L_power_k_minus_one"
+    strong_convexity_carried_by_slot = "_tg"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_sc_gradient_mapping_gap_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus Beck-Teboulle 2009 Lem. 2.3 mapping conversion"
+id = "proximal_gradient_sc_gradient_mapping_objective_gap"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_sc_gradient_mapping_distance_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus Beck-Teboulle 2009 Lem. 2.3 mapping conversion"
+id = "proximal_gradient_sc_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Mapping, Distance Initial)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_times_one_minus_mu_over_L_power_k_minus_one"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_sc_distance_from_gap_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus strong-convexity gap-to-distance conversion"
+id = "proximal_gradient_sc_distance_objective_gap"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_sc_distance_from_distance_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus strong-convexity gap-to-distance conversion"
+id = "proximal_gradient_sc_distance_certificate"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Distance Certificate)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_pg_strongly_convex_distance_initial_gap_bound"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_sc_gradient_mapping_gap_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 with composite strong convexity in g"
+id = "proximal_gradient_sc_g_gradient_mapping_objective_gap"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_one_over_one_plus_mu_over_L_power_k_times_initial_gap"
+    strong_convexity_carried_by_slot = "_tg"
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_sc_gradient_mapping_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 with composite strong convexity in g"
+id = "proximal_gradient_sc_g_gradient_mapping_distance"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term Mapping, Distance Initial)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_times_one_over_one_plus_mu_over_L_power_k_minus_one"
+    strong_convexity_carried_by_slot = "_tg"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_sc_distance_from_gap_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 plus strong-convexity gap-to-distance conversion"
+id = "proximal_gradient_sc_g_distance_objective_gap"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_one_over_one_plus_mu_over_L_power_k_times_initial_gap"
+    strong_convexity_carried_by_slot = "_tg"
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_g_sc_distance_from_distance_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 plus strong-convexity gap-to-distance conversion"
+id = "proximal_gradient_sc_g_distance_certificate"
+initial_bound = "distance_squared"
+method = "proximal_gradient"
+name = "Proximal Gradient (Strongly Convex Proximal Term Distance Certificate)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_pg_g_strongly_convex_distance_initial_gap_bound"
+    strong_convexity_carried_by_slot = "_tg"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "proximal_gradient_g_strongly_convex_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_gmd_gap_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 5, proximal-PL proximal-gradient linear rate"
+id = "proximal_gradient_gmd_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (Gradient-Mapping Dominance)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_minus_mu_over_L_power_k_times_initial_gap"
+    property_interpreted_for_composite_objective = true
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "gradient_mapping_dominance"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_gmd_mapping_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 5 plus proximal-gradient mapping conversion"
+id = "proximal_gradient_gmd_gradient_mapping_linear"
+initial_bound = "objective_gap"
+method = "proximal_gradient"
+name = "Proximal Gradient (GMD Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_one_minus_mu_over_L_power_k_times_initial_gap"
+    property_interpreted_for_composite_objective = true
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "gradient_mapping_dominance"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"

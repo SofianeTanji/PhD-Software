@@ -1,0 +1,762 @@
+# Theorem declarations for the gradient family.
+[[theorems]]
+bound = "gd_smooth_convex_bound"
+citation = "Drori-Teboulle 2014 Math. Program. 145, Thm. 3.1, exact fixed-step gradient-method bound with h=1/L"
+id = "gd_smooth_convex_fixed_step"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent"
+output = "last"
+quantity = "objective_gap"
+tightness = "tight"
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_convex_bound"
+citation = "Nesterov 1983 Dokl. Akad. Nauk SSSR; Nesterov 2004, Thm. 2.2.3, accelerated gradient O(1/k^2) rate"
+id = "nesterov1983_agd_convex"
+initial_bound = "distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "simplified_accelerated_gradient_smooth_convex_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1, exact worst-case FPGM variant"
+id = "taylor2017_simplified_agd_smooth"
+initial_bound = "distance_squared"
+method = "simplified_accelerated_gradient"
+name = "Simplified Accelerated Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "tight"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_convex_gradient_norm_from_distance_bound"
+citation = "Drori-Teboulle 2014 Math. Program. 145, Thm. 3.1 plus Nesterov 2004, Thm. 2.1.5 smoothness inequality"
+id = "gd_smooth_convex_gradient_norm_distance"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_over_two_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_convex_gradient_norm_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.2.3 plus Thm. 2.1.5 smoothness inequality"
+id = "nesterov1983_agd_convex_gradient_norm_distance"
+initial_bound = "distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_over_lambda_k_squared"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "rotaru2026_smooth_convex_gradient_norm_bound"
+citation = "Rotaru 2026, exact last-iterate gradient-norm bound for fixed-step gradient descent on smooth convex functions (manuscript key rotaru2026exact)"
+id = "rotaru2026_exact_fixed_step_gradient_norm"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Rotaru Free Step)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "tight"
+parameter_rules = {}
+
+    [theorems.parameter_domains.step_size]
+    lower = 0.0
+    upper = "rotaru2026_stepsize_upper"
+    lower_closed = false
+    upper_closed = false
+    scale = "linear"
+
+    [theorems.notes]
+    admissibility = "0 < step_size * L < 2"
+    formula = "2 L initial / (1 + step_size L min(2k, ((1-step_size L)^(-2k)-1)/(step_size L)))"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "simplified_accelerated_gradient_smooth_convex_gradient_norm_from_distance_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1 plus smoothness gradient-norm conversion"
+id = "taylor2017_simplified_agd_gradient_norm_distance"
+initial_bound = "distance_squared"
+method = "simplified_accelerated_gradient"
+name = "Simplified Accelerated Gradient (Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_L_squared_distance_squared_over_k_squared_plus_five_k_plus_six"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_distance_bound"
+citation = "Nesterov 2004, Thm. 2.1.14, optimal-step gradient method for smooth strongly convex minimization"
+id = "gd_sc_optimal_step_objective_from_distance"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_strongly_convex_optimal_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_distance_bound"
+citation = "Nesterov 2004, Thm. 2.2.3, accelerated gradient for smooth strongly convex minimization"
+id = "nesterov2004_agd_sc_energy_objective"
+initial_bound = "distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_gap_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1 with strong convexity implying PL"
+id = "gd_sc_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent Objective Gap"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_gradient_norm_from_gap_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1 plus Nesterov 2004, Thm. 2.1.5 smoothness inequality"
+id = "gd_sc_gradient_norm_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Strongly Convex Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_gradient_norm_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 plus Thm. 2.1.5 smoothness inequality"
+id = "gd_sc_gradient_norm_distance_optimal_step"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Strongly Convex Gradient Norm, Distance Initial)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_optimal_step_factor_power_two_k_times_distance_squared"
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_strongly_convex_optimal_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_gradient_norm_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.2.3 plus Thm. 2.1.5 smoothness inequality"
+id = "nesterov2004_agd_sc_gradient_norm_distance"
+initial_bound = "distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Strongly Convex Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_times_L_plus_mu_times_one_minus_sqrt_mu_over_L_power_k"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_distance_from_gap_bound"
+citation = "Nesterov 2004, Def. 2.1.2 strong convexity inequality, gap-to-distance conversion"
+id = "gd_sc_distance_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Strongly Convex Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_strongly_convex_distance_contraction_bound"
+citation = "Nesterov 2004, Thm. 2.1.14, optimal-step gradient-method distance contraction"
+id = "gd_sc_distance_contraction_optimal_step"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Strongly Convex Distance Contraction)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "optimal_step_factor_power_two_k_times_distance_squared"
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_strongly_convex_optimal_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_distance_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.2.3 plus Def. 2.1.2 strong-convexity gap-to-distance conversion"
+id = "nesterov2004_agd_sc_distance_from_distance"
+initial_bound = "distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Strongly Convex Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_plus_mu_over_mu_times_accelerated_factor_power_k"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_pl_gap_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1, smooth PL gradient-descent linear rate"
+id = "karimi2016_gd_smooth_pl_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (PL)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "gd_smooth_pl_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "polyak_lojasiewicz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_pl_gradient_norm_squared_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1 plus smoothness gradient-norm conversion"
+id = "karimi2016_gd_smooth_pl_gradient_norm_last"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (PL Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_one_minus_mu_over_L_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "gd_smooth_pl_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "polyak_lojasiewicz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_pl_gap_from_distance_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1 plus smoothness distance-to-gap initialization"
+id = "karimi2016_gd_smooth_pl_distance_initial_gap"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (PL, Distance Initial)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "half_L_distance_squared_times_one_minus_mu_over_L_power_k"
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "gd_smooth_pl_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "polyak_lojasiewicz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_pl_gradient_norm_from_distance_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 1 plus smoothness distance/gap normalization"
+id = "karimi2016_gd_smooth_pl_gradient_norm_distance"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (PL Gradient Norm, Distance Initial)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_distance_squared_times_one_minus_mu_over_L_power_k"
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "gd_smooth_pl_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "polyak_lojasiewicz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_convex_gradient_mapping_bound"
+citation = "Nesterov 2004, Sec. 1.2, Eq. (1.2.13), gradient-method stationarity bound from smoothness descent"
+id = "gd_smooth_convex_gradient_mapping_best"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Stationarity)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_initial_gap_over_k_plus_one"
+    gradient_mapping_reduces_to_gradient = true
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "gd_smooth_nonconvex_gradient_mapping_bound"
+citation = "Nesterov 2004, Sec. 1.2, Eq. (1.2.13), nonconvex gradient-method stationarity bound from smoothness descent"
+id = "gd_smooth_nonconvex_gradient_mapping_best"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Smooth Nonconvex Stationarity)"
+output = "best"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_initial_gap_over_k_plus_one"
+    gradient_mapping_reduces_to_gradient = true
+    objective_gap_interpreted_as_gap_to_lower_bound = true
+
+    [theorems.parameter_rules]
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_lyapunov_bound"
+citation = "Nesterov 2004, Thm. 2.2.3, strongly convex accelerated-gradient Lyapunov rate"
+id = "nesterov2004_agd_sc_lyapunov_objective"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Lyapunov)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_gradient_norm_from_lyapunov_bound"
+citation = "Nesterov 2004, Thm. 2.2.3 plus Thm. 2.1.5 smoothness gradient-norm conversion"
+id = "nesterov2004_agd_sc_lyapunov_gradient_norm"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Lyapunov Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_agd_strongly_convex_lyapunov_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "accelerated_gradient_smooth_strongly_convex_distance_from_lyapunov_bound"
+citation = "Nesterov 2004, Thm. 2.2.3 plus Def. 2.1.2 strong-convexity gap-to-distance conversion"
+id = "nesterov2004_agd_sc_lyapunov_distance"
+initial_bound = "objective_gap_plus_half_mu_distance_squared"
+method = "accelerated_gradient"
+name = "Accelerated Gradient (Lyapunov Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_agd_strongly_convex_lyapunov_bound"
+
+    [theorems.parameter_rules]
+    linear_factor = "sc_fista_linear_factor"
+    momentum = "strongly_convex_accelerated_momentum"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["strongly_convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_distance_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 specialized to smooth strongly convex quadratics; spectral normalization"
+id = "quadratic_gd_spectral_distance"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Spectral Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_minus_mu_over_L_squared_power_k_times_distance_squared"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_gap_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 specialized to smooth strongly convex quadratics; spectral normalization"
+id = "quadratic_gd_spectral_gap_distance_initial"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Spectral Gap)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "half_L_times_spectral_distance_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_gap_from_gap_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 specialized to smooth strongly convex quadratics; spectral normalization"
+id = "quadratic_gd_spectral_gap_objective_initial"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Spectral Gap, Gap Initial)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "one_minus_mu_over_L_squared_power_k_times_initial_gap"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_distance_from_gap_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 plus strong-convexity distance conversion for quadratics"
+id = "quadratic_gd_spectral_distance_objective_initial"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Distance, Gap Initial)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_over_mu_times_quadratic_spectral_gap_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_gradient_norm_from_distance_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 specialized to smooth strongly convex quadratics; spectral normalization"
+id = "quadratic_gd_spectral_gradient_norm_distance_initial"
+initial_bound = "distance_squared"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Gradient Norm)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_times_quadratic_spectral_distance_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+[[theorems]]
+bound = "quadratic_gd_spectral_gradient_norm_from_gap_bound"
+citation = "Nesterov 2004, Thm. 2.1.14 plus smoothness gradient-norm conversion for quadratics"
+id = "quadratic_gd_spectral_gradient_norm_objective_initial"
+initial_bound = "objective_gap"
+method = "gradient_descent"
+name = "Gradient Descent (Quadratic Gradient Norm, Gap Initial)"
+output = "last"
+quantity = "gradient_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "two_L_times_quadratic_spectral_gap_bound"
+
+    [theorems.parameter_rules]
+    rate_factor = "quadratic_gd_spectral_factor"
+    step_size = "gd_smooth_convex_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["quadratic", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"

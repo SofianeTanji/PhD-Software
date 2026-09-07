@@ -1,0 +1,443 @@
+# Theorem declarations for the projected family.
+[[theorems]]
+bound = "proximal_gradient_gmd_gap_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 5 specialized to indicator/projection term"
+id = "projected_gradient_gmd_objective_gap_linear"
+initial_bound = "objective_gap"
+method = "projected_gradient"
+name = "Projected Gradient (Gradient-Mapping Dominance)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    property_interpreted_for_composite_objective = true
+    proximal_slot_is_indicator_projection = true
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "gradient_mapping_dominance"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "proximal_gradient_gmd_mapping_bound"
+citation = "Karimi-Nutini-Schmidt 2016 LNCS 9851, Thm. 5 specialized to indicator/projection term plus mapping conversion"
+id = "projected_gradient_gmd_gradient_mapping_linear"
+initial_bound = "objective_gap"
+method = "projected_gradient"
+name = "Projected Gradient (GMD Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    property_interpreted_for_composite_objective = true
+    proximal_slot_is_indicator_projection = true
+
+    [theorems.parameter_rules]
+    rate_factor = "pl_linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["smooth", "gradient_mapping_dominance"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_convex_compact_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 3.1, ISTA rate with compact-domain diameter normalization"
+id = "projected_gradient_smooth_convex_compact_last"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_diameter_squared_over_2k"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_convex_compact_average_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 3.1, averaged ISTA rate with compact-domain diameter normalization"
+id = "projected_gradient_smooth_convex_compact_average"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_diameter_squared_over_2_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_compact_mapping_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3, projected-gradient mapping certificate"
+id = "projected_gradient_smooth_convex_compact_mapping_last"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient (Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_diameter_squared_over_k"
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_compact_average_mapping_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3, averaged projected-gradient mapping certificate"
+id = "projected_gradient_smooth_convex_compact_mapping_average"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient Average (Mapping)"
+output = "average"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_diameter_squared_over_k_plus_one"
+
+    [theorems.parameter_rules]
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "accelerated_projected_gradient_convex_compact_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Thm. 4.4, FISTA rate with compact-domain diameter normalization"
+id = "accelerated_projected_gradient_smooth_convex_compact"
+initial_bound = "none"
+method = "accelerated_projected_gradient"
+name = "Accelerated Projected Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "accelerated_projected_gradient_compact_mapping_bound"
+citation = "Beck-Teboulle 2009 SIIMS 2(1), Lem. 2.3 and Thm. 4.4, FISTA mapping certificate"
+id = "accelerated_projected_gradient_smooth_convex_compact_mapping"
+initial_bound = "none"
+method = "accelerated_projected_gradient"
+name = "Accelerated Projected Gradient (Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "L_squared_diameter_squared_over_lambda_k_squared"
+
+    [theorems.parameter_rules]
+    momentum = "fista_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "simplified_accelerated_projected_gradient_compact_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1, exact accelerated projected/proximal-gradient bound"
+id = "simplified_accelerated_projected_gradient_smooth_convex_compact"
+initial_bound = "none"
+method = "simplified_accelerated_projected_gradient"
+name = "Simplified Accelerated Projected Gradient"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "simplified_accelerated_projected_gradient_compact_mapping_bound"
+citation = "Taylor-Hendrickx-Glineur 2017 SIOPT 27(3), Sec. 4.2/Table 1 plus projected-gradient mapping conversion"
+id = "simplified_accelerated_projected_gradient_smooth_convex_compact_mapping"
+initial_bound = "none"
+method = "simplified_accelerated_projected_gradient"
+name = "Simplified Accelerated Projected Gradient (Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "four_L_squared_diameter_squared_over_k_squared_plus_five_k_plus_two"
+
+    [theorems.parameter_rules]
+    momentum = "simplified_accelerated_momentum"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_subgradient_convex_lipschitz_compact_bound"
+citation = "Nesterov 2004, Thm. 3.2.2, projected subgradient method with diameter normalization"
+id = "projected_subgradient_convex_lipschitz_compact_average"
+initial_bound = "none"
+method = "projected_subgradient_method"
+name = "Projected Subgradient Method (Average)"
+output = "average"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    formula = "M_diameter_over_sqrt_k_plus_one"
+    no_objective_evaluation_required = true
+
+    [theorems.parameter_rules]
+    step_size = "projected_subgradient_compact_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "lipschitz"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "subgradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_sc_compact_gap_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 with indicator/projection term and diameter normalization"
+id = "projected_gradient_sc_compact_gap"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient (Strongly Convex)"
+output = "last"
+quantity = "objective_gap"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_sc_compact_mapping_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus Beck-Teboulle 2009 Lem. 2.3 projected mapping conversion"
+id = "projected_gradient_sc_compact_mapping"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient (Strongly Convex Mapping)"
+output = "last"
+quantity = "gradient_mapping_norm_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
+[[theorems]]
+bound = "projected_gradient_sc_compact_distance_bound"
+citation = "Schmidt-Le Roux-Bach 2011 NeurIPS 24, Prop. 3 plus strong-convexity distance conversion"
+id = "projected_gradient_sc_compact_distance"
+initial_bound = "none"
+method = "projected_gradient"
+name = "Projected Gradient (Strongly Convex Distance)"
+output = "last"
+quantity = "distance_squared"
+tightness = "known_upper_bound"
+
+    [theorems.notes]
+    valid_for_k_at_least_one = true
+
+    [theorems.parameter_rules]
+    rate_factor = "linear_rate_factor"
+    step_size = "proximal_gradient_step"
+
+    [[theorems.roles]]
+    name = "f"
+    properties = ["convex", "smooth", "strongly_convex"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "gradient"
+    [[theorems.roles]]
+    name = "g"
+    properties = ["convex", "compact_domain"]
+
+        [[theorems.roles.oracles]]
+        exactness = "exact"
+        name = "prox"
