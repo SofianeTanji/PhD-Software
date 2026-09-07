@@ -4,6 +4,7 @@ Software accompanying my PhD thesis.
 
 - [Argo.jl](Argo.jl/): a Julia package for discovering and comparing first-order optimization methods through convergence certificates.
 - [Snacks](Snacks/): a Python package for binary kernel SVMs using Nyström features and RASSG-r optimization.
+- [ConvexHullPricing.jl](ConvexHullPricing.jl/): a Julia toolbox for convex hull pricing, unit commitment schedules, and uplift calculations.
 
 Each software directory contains its documentation and license.
 
@@ -37,3 +38,15 @@ uv sync --no-dev --extra repro
 ```
 
 See the [Snacks guide](Snacks/README.md) for installation alternatives and examples.
+
+## Using ConvexHullPricing.jl
+
+From the cloned repository:
+
+```sh
+cd ConvexHullPricing.jl
+julia --project=.
+```
+
+Run `using Pkg; Pkg.instantiate()` in Julia. A working Gurobi license is required.
+See the [ConvexHullPricing.jl guide](ConvexHullPricing.jl/README.md) for usage and experiments.
